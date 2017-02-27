@@ -1,10 +1,4 @@
-
-cc.FileUtils:getInstance():setPopupNotify(false)
-cc.FileUtils:getInstance():addSearchPath("src/")
-cc.FileUtils:getInstance():addSearchPath("res/")
-
-require "config"
-require "cocos.init"
+require("mod.behavior.core.functions")
 require("mod.behavior.util")
 require("mod.behavior.core.YJBehavior") 
 
@@ -15,7 +9,7 @@ end
 
 local function testbt(  )
     local bt = YJBehavior:new()
-    bt:load( "res/test_behavior3.json" )
+    bt:load( "test_behavior3.json" )
     local b = Blackboard:new()
     local s = bt:tick( "hello" , b  )  
 
@@ -44,5 +38,5 @@ local function main()
     testbt()  
 end 
 
-xpcall(main, __G__TRACKBACK__)
+xpcall(main, __G__TRACKBACK__bt)
  

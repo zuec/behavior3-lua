@@ -5,7 +5,7 @@
 -- 我自己的一些库函数，使用的时候可以重写他 
 
 if not json then
-    require "cocos.cocos2d.json"
+    require "json"
 end
 require("mod.behavior.running_lib") 
 require("mod.behavior.frame_updater_lib") 

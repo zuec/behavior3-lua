@@ -76,23 +76,21 @@ function YJBehavior:ctor(  )
     self.description = 'Default description'
     self.properties  = {}
     self.root        = nil 
-    self.debug       = nil 
+    self.debug       = nil
 end 
 
 function YJBehavior:load( path  ) 
-    local fileUtils = cc.FileUtils:getInstance()
-    local fullpath = fileUtils:fullPathForFilename( path ) 
-    _bt_obj.map = json.decode( io.readfile(fullpath) )  
+    _bt_obj.map = json.decode( io.readfile(path) )  
     _bt_obj.rootNode = _bt_obj.map.root 
     _bt_obj.nodes = _bt_obj.map.nodes  
     for i,v in ipairs(_bt_obj.map.custom_nodes) do
         _bt_obj.custom_nodes[ v.name ] = v 
     end 
 
-    -- dump( _bt_obj.map , "[_bt_obj] .map  =>" )
-    -- dump( _bt_obj.rootNode ,"[_bt_obj] rootNode  =>")
-    -- dump( _bt_obj.nodes , "[_bt_obj] nodes  =>" )  
-    -- dump( _bt_obj.custom_nodes,"[_bt_obj] custom_nodes  =>")  
+    dump( _bt_obj.map , "[_bt_obj] .map  =>" )
+    dump( _bt_obj.rootNode ,"[_bt_obj] rootNode  =>")
+    dump( _bt_obj.nodes , "[_bt_obj] nodes  =>" )  
+    dump( _bt_obj.custom_nodes,"[_bt_obj] custom_nodes  =>")  
 
     local tree_nodes = {}
     for k, v in pairs(_bt_obj.nodes) do 
@@ -136,7 +134,7 @@ function YJBehavior:load( path  )
     end  
     self.id = tree_nodes[ _bt_obj.rootNode ].id
     self.root = tree_nodes[ _bt_obj.rootNode ] 
-    -- dump(tree_nodes, "tree_nodes" )
+    dump(tree_nodes, "tree_nodes" )
 end
 function YJBehavior:tick( target , blackboard  ) 
     if not blackboard then
